@@ -1,0 +1,11 @@
+requests
+selenium
+loguru
+pandas
+bs4
+pymysql
+dotenv
+boto3
+tqdm
+awswrangler
+pypdf
