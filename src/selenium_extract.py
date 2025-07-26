@@ -334,7 +334,7 @@ def selenium_download_v3(url_prefix,download_dir,size_mb):
           #      logger.error(f'Click failed again: {e2}')
     documents = driver.find_elements(By.XPATH, "//a[@class='data-tracking-document']")
                 
-    for file in documents:
+    for file in documents[0:10]:
         try:
             file.click()
             time.sleep(max(5, size_mb))
@@ -349,7 +349,7 @@ def selenium_download_v3(url_prefix,download_dir,size_mb):
     documents = driver.find_elements(By.XPATH, "//button[@class= 'btn btn-primary btn-generar-liga data-tracking-document']")
 
     logger.info(f'detected {len(documents)}')
-    for file in documents:
+    for file in documents[0:10]:
         try:
             file.click()
             time.sleep(max(5, size_mb))
