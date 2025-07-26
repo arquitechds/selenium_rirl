@@ -289,49 +289,50 @@ def selenium_download_v3(url_prefix,download_dir,size_mb):
     original_window = driver.current_window_handle
 
     # UNPOP
-    accordions = driver.find_elements(By.XPATH, "//button[@class='accordion-button collapsed data-tracking-click ']")
-    print(len(accordions))
-    for ac in reversed(accordions):
-        driver.save_screenshot('3-loginpage.png')
-        ac.click()
-        time.sleep(2)
+    #accordions = driver.find_elements(By.XPATH, "//button[@class='accordion-button collapsed data-tracking-click ']")
+    #print(len(accordions))
+    #for ac in reversed(accordions):
+    #    driver.save_screenshot('3-loginpage.png')
+    #    ac.click()
+    #    time.sleep(2)
 
-    subaccordions = driver.find_elements(By.XPATH, "//button[@class='accordion-button collapsed ']")
-    driver.save_screenshot('3-loginpage.png')
-    for ac in reversed(subaccordions):
-        try: 
-            ac.click()
-            time.sleep(2)
-            driver.save_screenshot('5-loginpage.png')
-        except:
-            pass
+    #subaccordions = driver.find_elements(By.XPATH, "//button[@class='accordion-button collapsed ']")
+    #driver.save_screenshot('3-loginpage.png')
+    #for ac in reversed(subaccordions):
+    #    try: 
+    #        ac.click()
+    #        time.sleep(2)
+    #        driver.save_screenshot('5-loginpage.png')
+    #    except:
+    #        pass
         
     # UNPOP
     driver.find_element(By.XPATH,"//a[@id='close-opinion-tool']").click()
     driver.save_screenshot('1-close.png')
 
     # Step 2: Execute the JavaScript click
+    #documents = driver.find_elements(By.XPATH, "//a[@class='data-tracking-document']")
+    #logger.info(f'detected {len(documents)}')
+    #for file in documents:
+    #    try:
+    #        # Scroll to the element before clicking
+    #        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", file)
+    #        time.sleep(1)  # Optional: let the scroll complete
+    #        driver.save_screenshot('5-loginpage.png')
+
+ #           driver.execute_script("arguments[0].click();", file)
+#
+ #           # Espera tiempo razonable para que el navegador descargue
+  #          time.sleep(max(5, size_mb))
+   #     except Exception as e1:
+    #        logger.warning(f'First click failed: {e1}')
+     #       try:
+      #          # Try JavaScript click as fallback
+       #         driver.execute_script("arguments[0].click();", file)
+        #        time.sleep(max(5, size_mb))
+         #   except Exception as e2:
+          #      logger.error(f'Click failed again: {e2}')
     documents = driver.find_elements(By.XPATH, "//a[@class='data-tracking-document']")
-    logger.info(f'detected {len(documents)}')
-    for file in documents:
-        try:
-            # Scroll to the element before clicking
-            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", file)
-            time.sleep(1)  # Optional: let the scroll complete
-            driver.save_screenshot('5-loginpage.png')
-
-            driver.execute_script("arguments[0].click();", file)
-
-            # Espera tiempo razonable para que el navegador descargue
-            time.sleep(max(5, size_mb))
-        except Exception as e1:
-            logger.warning(f'First click failed: {e1}')
-            try:
-                # Try JavaScript click as fallback
-                driver.execute_script("arguments[0].click();", file)
-                time.sleep(max(5, size_mb))
-            except Exception as e2:
-                logger.error(f'Click failed again: {e2}')
                 
     for file in documents:
         try:
